@@ -8,6 +8,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import json
 import random
+from pathlib import Path
 
 random.seed(42)
 np.random.seed(42)
@@ -72,14 +73,18 @@ def generate_climate_data(n_rows=500):
     for i in bad_date_idx:
         df.loc[i, "date"] = random.choice(["N/A", "unknown", "2020/99/01", ""])
 
-    df.to_csv("C:\\Users\\akhare\\OneDrive - Nice Software Solutions\\AI_Data_Analysis\\data\\climate_raw.csv", index=False)
+    # ── Save to CSV ───────────────────────────────────────────────────────────
+    BASE_DIR = Path(__file__).parent
+    df.to_csv(BASE_DIR / "climate_raw.csv", index=False)
     print(f"✅ CSV saved: {len(df)} rows × {len(df.columns)} columns")
 
     # ── Also save a JSON subset ───────────────────────────────────────────────
     json_data = df.head(100).to_dict(orient="records")
-    with open("C:\\Users\\akhare\\OneDrive - Nice Software Solutions\\AI_Data_Analysis\\data\\climate_raw.json", "w") as f:
+    with open(BASE_DIR / "climate_raw.json", "w") as f:
         json.dump(json_data, f, default=str, indent=2)
     print("✅ JSON saved: 100 records")
 
 if __name__ == "__main__":
     generate_climate_data()
+
+
