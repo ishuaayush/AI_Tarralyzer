@@ -1,3 +1,5 @@
+![CI workflow status badge for terralyze repository showing build and test results](https://github.com/YOUR_USERNAME/terralyze/actions/workflows/ci.yml/badge.svg)
+
 # 🌍 AI Climate Data Analyst
 
 > **Auto-clean → AI Insights → Interactive Visualisations**

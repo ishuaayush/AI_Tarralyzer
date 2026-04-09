@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.14"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run data generation
+        run: python data/generate_data.py
+
+      - name: Run cleaning pipeline
+        run: python -c "from src.data_cleaner import ClimateDataCleaner; ClimateDataCleaner('data/climate_raw.csv').run()"
