@@ -3,7 +3,7 @@
 # 🌍 AI Climate Data Analyst
 
 > **Auto-clean → AI Insights → Interactive Visualisations**
-> An end-to-end data analytics system for climate & environmental datasets, powered by Python, LangChain, Claude (Anthropic), and Streamlit.
+> An end-to-end data analytics system for climate & environmental datasets, powered by Python, LangChain, Gemma 4, and Streamlit.
 
 ---
 
@@ -11,7 +11,7 @@
 
 ```
 Raw CSV / JSON  ──►  Auto Cleaner  ──►  AI Insights Engine  ──►  Streamlit Dashboard
-(climate data)        (Pandas)          (LangChain + Claude)       (Plotly + Charts)
+(climate data)        (Pandas)          (LangChain + Gemma 4)       (Plotly + Charts)
 ```
 
 ---
@@ -99,7 +99,7 @@ Every step is logged in a structured `report` dict available via `cleaner.get_re
 
 `src/insights_engine.py` — `InsightsEngine`
 
-Uses **LangChain** + **Claude (claude-sonnet-4)** to analyse the cleaned dataset and return structured JSON insights:
+Uses **LangChain** + **Gemma 4 (Gemma 4:e4b)** to analyse the cleaned dataset and return structured JSON insights:
 
 ```json
 {
@@ -115,7 +115,7 @@ Uses **LangChain** + **Claude (claude-sonnet-4)** to analyse the cleaned dataset
 }
 ```
 
-**Fallback mode**: If no API key is set, a rule-based analytical fallback is used — the dashboard still works fully without a key.
+**Fallback mode**: If no AI Model is set, a rule-based analytical fallback is used — the dashboard still works fully without a key.
 
 ---
 
@@ -167,7 +167,7 @@ Uses **LangChain** + **Claude (claude-sonnet-4)** to analyse the cleaned dataset
 | Layer | Technology |
 |-------|-----------|
 | Data processing | Python 3.10+, Pandas 2.x, NumPy |
-| AI / LLM | Anthropic Claude (claude-sonnet-4), LangChain |
+| AI / LLM | Google Gemma 4, LangChain, Ollama |
 | Visualisation | Plotly 5.x, Matplotlib |
 | Dashboard | Streamlit 1.32+ |
 | Notebooks | Jupyter, ipykernel |
